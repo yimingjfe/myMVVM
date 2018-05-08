@@ -8,8 +8,8 @@ class Dep {
   }
 
   notify(){
-    this.watcher.forEach(watcher => {
-      watcher.update()
+    this.watchers.forEach(watcher => {
+      watcher.run()
     })
   }
 }

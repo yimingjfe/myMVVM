@@ -7,7 +7,7 @@ class Directive {
     Dep.target = watcher
     let value = scope.model[raw]
     Dep.target = null
-    this.update(raw, scope)
+    watcher.run()
   }
 }
 

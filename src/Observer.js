@@ -11,19 +11,19 @@ class Observer{
 
   defineReactive(model, prop, value){
     const dep = this.dep
+    let val = value
     Object.defineProperty(model, prop, {
       get(){  // 如何保证只有第一次get增加addWatcher
         const target = Dep.target
         if(target){
           dep.addWatcher(Dep.target)
         }
-        return value
+        return val
       },
       set(newVal){
-        model[prop] = newVal
+        val = newVal
         dep.notify()
-      },
-      writeable: true
+      }
     })
   }
 }
