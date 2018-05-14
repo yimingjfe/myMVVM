@@ -1,8 +1,6 @@
 import Directive from './Directive'
 import * as directives from './directives'
 
-// fragment --> node --> children
-
 function compile(){
   const el = this.el
   const data = this._data
@@ -42,8 +40,8 @@ function parseTextNode(node, data){
     model: data
   }
   const textContent = node.textContent.trim()
-  if(textContent){
-    textRaw = textContent.match(/\{\{(.+)\}\}/)[1]
+  if(textContent && /\{\{(.+)\}\}/.test(textContent)){
+    textRaw = RegExp.$1
     textRaw = textRaw && textRaw.trim()
     const directiveType = 'Vtext'
     const DirectiveClass = directives[directiveType]
@@ -53,7 +51,7 @@ function parseTextNode(node, data){
 
 function parseElementNode(node, data){
   const attrs = node.attributes
-  let parentNode = node.parentNode
+  let parentNode = node.parentNode.nodeType === 9
   const directiveArray = []
   const scope = {
     parentNode: node.parentNode,
@@ -63,12 +61,15 @@ function parseElementNode(node, data){
     model: data
   }
   let textRaw;
-  Object.keys(attrs).forEach(name => {
+
+  Array.from(attrs).forEach(attr => {
+    const name = attr.name
     if(name.startsWith('v-')){
       const directiveType = 'V' + name.slice(2)
-      const raw = attrs[name]
+      const raw = attr.value
+      console.log('raw', raw)
       const DirectiveClass = directives[directiveType]
-      directiveArray.push(new DirectiveClass(directiveType, raw, scope))
+      if(DirectiveClass) directiveArray.push(new DirectiveClass(directiveType, raw, scope))
     }
   })
 

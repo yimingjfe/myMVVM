@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+      <span v-if="show">{{firstName}}</span>
+      <span v-else>{{secondName}}</span>
+  </div>
+  <script src='../src/index.js'></script>
+  <script>
+        var obj = {
+          show: false,
+          firstName: 'wei',
+          secondName: 'hehehe',
+          fullName: 3333
+        };
+
+        var app=new Vum({
+          el:'#app',
+          data:obj
+        });
+  </script>
+</body>
+</html>

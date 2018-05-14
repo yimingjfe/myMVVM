@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <div id="person">
+        <h1 >{{title}}</h1>
+        <div v-show="show" id="test">我是laughing猪爷,lol电6<span>王者</span>1</div>
+        <input type="text" v-model="firstName"/>
+        <div v-text="firstName"></div>
+        <input type="text" v-model="secondName"/>
+        <div v-text="secondName"></div>
+        <div v-text="fullName"></div>
+    </div>
+
+    <script src='../src/index.js'></script>
+    <script>
+        var obj = {
+          title: '欢迎来到英雄联盟',
+          show: false,
+          firstName: 'zhu',
+          secondName: 'jian',
+          fullName: 3333
+        };
+
+        var app=new Vum({
+          el:'#person',
+          data:obj
+        });
+
+    </script>
+</body>
+</html>

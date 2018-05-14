@@ -8,9 +8,8 @@
 </head>
 <body>
     <div id="app">
-        {{ firstName }}
-        <!-- <span>{{ firstName }}</span>
-        <span>{{ lastName }}</span> -->
+        <span v-if="isShowFirst">{{ firstName }}</span>
+        <span>{{ lastName }}</span>
     </div>
   <script src='./src/index.js'></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -19,7 +18,8 @@
       el: '#app',
       data: {
         firstName: 'Hello',
-        lastName: 'Vue'
+        lastName: 'Vum',
+        isShowFirst: false
       }
     })
 

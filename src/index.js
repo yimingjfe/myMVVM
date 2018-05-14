@@ -1,6 +1,6 @@
 import Observer from './Observer'
 import { compile } from './compile'
-
+// parseElementNode方法中parentNode的指向不应该是fragment
 class Vum{
   constructor(options){
     const data = this._data = options.data
@@ -23,5 +23,10 @@ class Vum{
     }
   }
 }
+
+
+module.hot.accept(function () {
+  location.reload()
+});
 
 window.Vum = Vum

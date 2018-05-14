@@ -1,13 +1,14 @@
-import Dep from './dep'
+
 import Watcher from './Watcher'
 
 class Directive {
   constructor(type, raw, scope){
-    const watcher = new Watcher(raw, scope, this.update.bind(this))
-    Dep.target = watcher
-    let value = scope.model[raw]
-    Dep.target = null
-    watcher.run()
+    Object.assign(this, scope)
+    this.watcher = new Watcher(raw, scope, this.update.bind(this))
+  }
+
+  bind(){
+    this.watcher.run()
   }
 }
 
