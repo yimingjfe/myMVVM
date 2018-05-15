@@ -7,9 +7,9 @@
   <title>Document</title>
 </head>
 <body>
-    <div id="person">
+    <div id="app">
         <h1 >{{title}}</h1>
-        <div v-show="show" id="test">我是laughing猪爷,lol电6<span>王者</span>1</div>
+        <div v-show="show" id="test">hahahahha<span>这是一个mvvm</span>示例</div>
         <input type="text" v-model="firstName"/>
         <div v-text="firstName"></div>
         <input type="text" v-model="secondName"/>
@@ -20,15 +20,15 @@
     <script src='../src/index.js'></script>
     <script>
         var obj = {
-          title: '欢迎来到英雄联盟',
+          title: '欢迎来到本demo',
           show: false,
-          firstName: 'zhu',
-          secondName: 'jian',
+          firstName: 'vue',
+          secondName: 'vum',
           fullName: 3333
         };
 
         var app=new Vum({
-          el:'#person',
+          el:'#app',
           data:obj
         });
 
